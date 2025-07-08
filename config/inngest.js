@@ -7,10 +7,9 @@ export const inngest = new Inngest({ id: "quickcart-next" });
 //inngest function to save user data to database
 export const syncUserCreation = inngest.createFunction(
     {
-        id: "sync-user-creation",
-        name: "Sync User Creation", 
+        id: "sync-user-from-clerk",
     },
-        {event: "user.created"},
+        {event: "clerk/user.created"},
             async ({event}) => {
                 const {id, first_name, last_name, email_addresses, image_url} = event.data
                 const userData = {
